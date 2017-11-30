@@ -1,0 +1,42 @@
+﻿@model Profesor
+
+<h2>Ficha Profesor</h2>
+
+<fieldset class="form-horizontal">
+
+    <legend class="label">Informacion Profesor</legend>
+
+    <div class="row">
+        <div class="form-group col-md-7 col-sm-7">
+            <label for="rut">Rut:</label>
+            <div>
+                @Html.DisplayFor(m => m.rut)
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-7 col-sm-7">
+            <label for="nombre">Nombre Completo:</label>
+            <div>
+                @Html.DisplayFor(m => m.nombre)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-7 col-sm-7">
+            <label for="titulo">Titulo:</label>
+            <div>
+                @Html.DisplayFor(m => m.titulo)
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-7 col-sm-7">
+            <label for="grado">Grado Profesional:</label>
+            <div>
+                @Html.DisplayFor(m => m.grado)
+            </div>
+        </div>
+    </div>
+</fieldset>

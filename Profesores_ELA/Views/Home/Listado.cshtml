@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Profesor>
+
+<h2>Listado de Profesores</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <th>Nombre</th>
+        <th>Rut</th>
+        <th>Titulo Profesional</th>
+        <th>Grado</th>
+        <th>Accion</th>
+    </thead>
+    
+    <tbody>
+        @foreach (Profesor profesor in Model)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(i => profesor.nombre)</td>
+                    <td> @Html.DisplayFor(i => profesor.rut)</td>
+                    <td> @Html.DisplayFor(i => profesor.titulo)</td>
+                    <td> @Html.DisplayFor(i => profesor.grado)</td>
+                    <td> @Html.ActionLink("Ver", "Visualizar", "Home", new { rut = profesor.rut }, null) </td>
+                </tr>
+            }
+    </tbody>
+</table> 

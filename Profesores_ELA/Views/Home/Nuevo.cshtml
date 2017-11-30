@@ -1,0 +1,56 @@
+﻿@model Profesor
+<h2> Mantenedor de Profesores </h2>
+@using (@Html.BeginForm("Ficha", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+
+        @*<form
+
+                action="Home/Ficha" method="post" class="form-horizontal">
+
+        </form>*@
+
+        <h3> Datos de Profesor </h3>
+
+        <div class="form-group col-md-7 col-sm-7">
+            <label class="control-label">rut</label>
+            @Html.TextBoxFor(m => m.rut, null, new { @class = "form-control" })
+        </div>
+
+            <div class="form-group col-md-7 col-sm-7">
+                <label class="control-label">Nombre</label>
+                @Html.TextBoxFor(m => m.nombre, null, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-7 col-sm-7">
+                <label class="control-label">Titulo</label>
+                @Html.TextBoxFor(m => m.titulo, null, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group col-md-7 col-sm-7">
+                <label class="control-label " for="grado">Grado Profesional</label>
+                
+                    @Html.DropDownListFor(m => m.grado, new List<SelectListItem>
+                    {
+                        new SelectListItem{Text="", Value=""},
+                        new SelectListItem{Text="Tecnico Superior", Value="Tecnico"},
+                        new SelectListItem{Text="Ingeniero", Value="Ingeniero"},
+                        new SelectListItem{Text="Magister", Value="Magister"},
+                        new SelectListItem{Text="Doctorado", Value="Doctorado"},
+                    },
+                    new { @class = "form-control" }
+                    )
+            </div>
+
+            <div class="form-group">
+                 <div class="col-sm-offset-2 col-sm-1">
+                      <button type="reset" class="btn btn-info">
+                           Limpiar
+                      </button>
+                 </div>
+                 <div class="col-sm-offset-1 col-sm-1">
+                      <button type="submit" class="btn btn-primary">
+                           Guardar
+                      </button>
+                 </div>
+            </div>
+       }

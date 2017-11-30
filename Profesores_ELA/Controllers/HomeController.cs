@@ -10,28 +10,59 @@ namespace Profesores_ELA.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        List<Profesor> listado = new List<Profesor>();
+
+        public HomeController()
         {
-            return View();
+
+            listado.Add(new Profesor() { rut = 19270130, nombre = "Karina Alejadnra Cardenas", titulo = "Tecnico Programador", grado ="Tecnico"});
+            listado.Add(new Profesor() { rut = 10533932, nombre = "Alfonso Cardenas Mohr", titulo = "Ing Informatica", grado ="Ingeniero"});
+
         }
 
-        public IActionResult About()
+        public IActionResult Nuevo()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            return View(new Profesor());
         }
 
-        public IActionResult Contact()
+        public IActionResult Listado()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return View(listado);
         }
 
-        public IActionResult Error()
+       public IActionResult Ficha(int rut, string nombre, string titulo, string grado)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            Profesor nueva = new Profesor()
+            {
+                rut = rut,
+                nombre = nombre,
+                titulo = titulo,
+                grado = grado
+            };
+
+            return View(nueva);
+        }
+        private Profesor bProfesor(int rut)
+        {
+            Profesor nueva = new Profesor();
+            foreach (Profesor profesor in listado)
+            {
+                if (profesor.rut == rut)
+                {
+                    nueva = profesor;
+                }
+            }
+            return nueva;
+        }
+        public IActionResult Visualizar(int rut)
+        {
+            Profesor nueva = bProfesor(rut);
+
+            if (nueva != null)
+            {
+                return View("Ficha", nueva);
+            }
+            return View("Listado", listado);
         }
     }
 }
